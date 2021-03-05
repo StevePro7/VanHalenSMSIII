@@ -91,8 +91,8 @@ engine\content_manager.rel engine\cursor_manager.rel ^
 engine\enum_manager.rel engine\font_manager.rel engine\input_manager.rel engine\locale_manager.rel engine\record_manager.rel ^
 engine\screen_manager.rel engine\scroll_manager.rel engine\storage_manager.rel engine\timer_manager.rel ^
 object\cursor_object.rel object\record_object.rel object\scroll_object.rel object\storage_object.rel object\timer_object.rel ^
-screen\none_screen.rel screen\splash_screen.rel screen\title_screen.rel screen\scroll_screen.rel screen\select_screen.rel ^
-screen\record_screen.rel screen\detail_screen.rel screen\test_screen.rel screen\func_screen.rel ^
+screen\none_screen.rel screen\splash_screen.rel screen\title_screen.rel screen\scroll_screen.rel ^
+screen\select_screen.rel screen\record_screen.rel ^
 gfx.rel ^
 psg.rel
 
