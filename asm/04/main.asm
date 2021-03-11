@@ -1217,7 +1217,6 @@ _devkit_SMS_setSpriteMode:
 A$_sms_manager$343:	
 C$_sms_manager.c$59$1$89:	
 C$_sms_manager.c$61$1$90:	
-G$devkit_SMS_useFirstHalfTilesfo:	
 _devkit_SMS_useFirstHalfTilesfor:	
 		ld l, $00
 		jp _SMS_useFirstHalfTilesforSprites
@@ -1226,8 +1225,7 @@ _devkit_SMS_useFirstHalfTilesfor:
 A$_sms_manager$361:	
 C$_sms_manager.c$63$1$90:	
 C$_sms_manager.c$65$1$91:	
-G$devkit_SMS_useFirstHalfTilesfo:	
-_devkit_SMS_useFirstHalfTilesfor:	
+_devkit_SMS_useFirstHalfTilesfos:	
 	.db $2E $01
 	
 ; Data from 884 to 886 (3 bytes)	
@@ -2529,7 +2527,6 @@ XFaudio_manager$play_sfx$0$0:
 A$content_manager$65:	
 C$content_manager.c$12$0$0:	
 C$content_manager.c$14$1$17:	
-G$engine_content_manager_load_ti:	
 _engine_content_manager_load_til:	
 		ld hl, $0000
 		push hl
@@ -2548,7 +2545,6 @@ _engine_content_manager_load_til:
 A$content_manager$96:	
 C$content_manager.c$17$1$17:	
 C$content_manager.c$19$1$18:	
-G$engine_content_manager_load_sp:	
 _engine_content_manager_load_spl:	
 	.db $3E $02
 	
@@ -2653,7 +2649,6 @@ XG$engine_content_manager_load_s:
 A$content_manager$145:	
 C$content_manager.c$25$1$18:	
 C$content_manager.c$27$1$19:	
-G$engine_content_manager_load_ti:	
 _engine_content_manager_load_tit:	
 	.db $3E $03
 	
@@ -2779,16 +2774,13 @@ A$content_manager$186:
 	
 ; Data from B19 to B19 (1 bytes)	
 A$content_manager$191:	
-C$content_manager.c$34$1$19:	
-XG$engine_content_manager_load_t:	
 	.db $C9
 	
 ; Data from B1A to B1B (2 bytes)	
 A$content_manager$204:	
 C$content_manager.c$35$1$19:	
 C$content_manager.c$37$1$20:	
-G$engine_content_manager_load_ti:	
-_engine_content_manager_load_tit:	
+_engine_content_manager_load_tiu:	
 	.db $3E $03
 	
 ; Data from B1C to B1C (1 bytes)	
@@ -2913,14 +2905,11 @@ A$content_manager$245:
 	
 ; Data from B50 to B50 (1 bytes)	
 A$content_manager$250:	
-C$content_manager.c$44$1$20:	
-XG$engine_content_manager_load_t:	
 	.db $C9
 	
 A$content_manager$263:	
 C$content_manager.c$47$1$20:	
 C$content_manager.c$50$1$21:	
-G$engine_content_manager_load_sp:	
 _engine_content_manager_load_spr:	
 		ld hl, $0120
 		push hl
@@ -5682,9 +5671,9 @@ _engine_screen_manager_init:
 		ld hl, Fscreen_manager$curr_screen_type	; Fscreen_manager$curr_screen_type = $C02B
 		ld (hl), $00
 		ld hl, A$none_screen$60	; A$none_screen$60 = $1195
-		ld (Fscreen_manager$load_method$0$0), hl	; Fscreen_manager$load_method$0$0 = $C02D
+		ld ($C02D), hl	; $C02D = $C02D
 		ld hl, A$splash_screen$69	; A$splash_screen$69 = $119D
-		ld (Fscreen_manager$load_method$0$0 + 2), hl	; Fscreen_manager$load_method$0$0 + 2 = $C02F
+		ld ($C02D + 2), hl	; $C02D + 2 = $C02F
 		ld hl, A$title_screen$81	; A$title_screen$81 = $1220
 		ld (_RAM_C031_), hl
 		ld hl, A$scroll_screen$62	; A$scroll_screen$62 = $1389
@@ -5719,7 +5708,7 @@ _engine_screen_manager_update:
 		ld a, (iy+0)
 		ld iy, Fscreen_manager$curr_screen_type	; Fscreen_manager$curr_screen_type = $C02B
 		ld (iy+0), a
-		ld bc, Fscreen_manager$load_method$0$0	; Fscreen_manager$load_method$0$0 = $C02D
+		ld bc, $C02D	; $C02D = $C02D
 		ld l, (iy+0)
 		ld h, $00
 		add hl, hl
@@ -9462,7 +9451,7 @@ Frecord_object$__xinit_record_ti:
 	.db $67 $80 $9F $80 $C7 $80 $7A $80
 	
 ; Data from 205F to 2076 (24 bytes)	
-Frecord_object$__xinit_record_ti:	
+Frecord_object$__xinit_record_tu:	
 	.db $10 $80 $10 $80 $10 $80 $10 $80 $10 $80 $10 $80 $10 $80 $10 $80
 	.db $10 $80 $10 $80 $10 $80 $10 $80
 	
@@ -9483,7 +9472,7 @@ gsinit:
 		ret
 	
 	; Data from 20A3 to 7F8B (24297 bytes)
-	.dsb 24297, $00
+	;.dsb 24297, $00
 	
 ; Data from 7F8C to 7FC7 (60 bytes)	
 G$__SMS__SDSC_descr$0$0:	
