@@ -5168,10 +5168,10 @@ C$input_manager.c$10$0$0:
 C$input_manager.c$12$1$19:	
 G$engine_input_manager_update$0$:	
 _engine_input_manager_update:	
-		ld hl, (Finput_manager$curr_joypad1$0$0)	; Finput_manager$curr_joypad1$0$0 = $C145
-		ld (Finput_manager$prev_joypad1$0$0), hl	; Finput_manager$prev_joypad1$0$0 = $C147
+		ld hl, ($C145)	; $C145 = $C145
+		ld ($C147), hl	; $C147 = $C147
 		call A$_sms_manager$874
-		ld (Finput_manager$curr_joypad1$0$0), hl	; Finput_manager$curr_joypad1$0$0 = $C145
+		ld ($C145), hl	; $C145 = $C145
 		ret
 	
 ; Data from ED3 to ED5 (3 bytes)	
@@ -5667,8 +5667,8 @@ _engine_screen_manager_init:
 		ld hl, $0002
 		add hl, sp
 		ld a, (hl)
-		ld (Fscreen_manager$next_screen_type), a	; Fscreen_manager$next_screen_type = $C02C
-		ld hl, Fscreen_manager$curr_screen_type	; Fscreen_manager$curr_screen_type = $C02B
+		ld ($C02C), a	; $C02C = $C02C
+		ld hl, $C02B	; $C02B = $C02B
 		ld (hl), $00
 		ld hl, A$none_screen$60	; A$none_screen$60 = $1195
 		ld ($C02D), hl	; $C02D = $C02D
@@ -5701,12 +5701,12 @@ C$screen_manager.c$41$1$10:
 C$screen_manager.c$43$1$11:	
 G$engine_screen_manager_update$0:	
 _engine_screen_manager_update:	
-		ld a, (Fscreen_manager$curr_screen_type)	; Fscreen_manager$curr_screen_type = $C02B
-		ld iy, Fscreen_manager$next_screen_type	; Fscreen_manager$next_screen_type = $C02C
+		ld a, ($C02B)	; $C02B = $C02B
+		ld iy, $C02C	; $C02C = $C02C
 		sub (iy+0)
 		jr z, A$screen_manager$193
 		ld a, (iy+0)
-		ld iy, Fscreen_manager$curr_screen_type	; Fscreen_manager$curr_screen_type = $C02B
+		ld iy, $C02B	; $C02B = $C02B
 		ld (iy+0), a
 		ld bc, $C02D	; $C02D = $C02D
 		ld l, (iy+0)
@@ -5721,7 +5721,7 @@ _engine_screen_manager_update:
 A$screen_manager$193:	
 C$screen_manager.c$49$1$11:	
 		ld bc, $C039	; $C039 = $C039
-		ld iy, Fscreen_manager$curr_screen_type	; Fscreen_manager$curr_screen_type = $C02B
+		ld iy, $C02B	; $C02B = $C02B
 		ld l, (iy+0)
 		ld h, $00
 		add hl, hl
@@ -5729,7 +5729,7 @@ C$screen_manager.c$49$1$11:
 		ld c, (hl)
 		inc hl
 		ld b, (hl)
-		ld hl, Fscreen_manager$next_screen_type	; Fscreen_manager$next_screen_type = $C02C
+		ld hl, $C02C	; $C02C = $C02C
 		push hl
 		ld l, c
 		ld h, b
@@ -5760,7 +5760,7 @@ C$scroll_manager.c$16$1$20:
 C$scroll_manager.c$17$1$20:	
 G$engine_scroll_manager_load$0$0:	
 _engine_scroll_manager_load:	
-		ld hl, G$global_scroll_object$0$0	; G$global_scroll_object$0$0 = $C045
+		ld hl, $C045	; $C045 = $C045
 		ld iy, $0002
 		add iy, sp
 		ld a, (iy+0)
@@ -8829,12 +8829,12 @@ _UNSAFE_SMS_copySpritestoSAT:
 		ld hl, $7F00
 		rst $08	; _LABEL_8_
 		ld c, Port_VDPData
-		ld hl, SpriteTableY	; SpriteTableY = $C062
+		ld hl, $C062	; $C062 = $C062
 		call _OUTI64
 		ld hl, $7F80
 		rst $08	; _LABEL_8_
 		ld c, Port_VDPData
-		ld hl, SpriteTableXN	; SpriteTableXN = $C0A2
+		ld hl, $C0A2	; $C0A2 = $C0A2
 		jp _OUTI128
 	
 ; Data from 1A20 to 1A3C (29 bytes)	
@@ -8897,12 +8897,12 @@ _SMS_init:
 		ld a, c
 		sub $E7
 		jr c, +
-		ld hl, VDPType	; VDPType = $C05D
+		ld hl, $C05D	; $C05D = $C05D
 		ld (hl), $80
 		ret
 	
 +:	
-		ld hl, VDPType	; VDPType = $C05D
+		ld hl, $C05D	; $C05D = $C05D
 		ld (hl), $40
 		ret
 	
@@ -8918,7 +8918,7 @@ _SMS_VDPturnOnFeature:
 		ld c, l
 		ld e, h
 		ld d, $00
-		ld hl, VDPReg	; VDPReg = $C1A9
+		ld hl, $C1A9	; $C1A9 = $C1A9
 		add hl, de
 		ld a, (hl)
 		or c
@@ -8939,7 +8939,7 @@ _SMS_VDPturnOffFeature:
 		cpl
 		ld b, a
 		ld d, $00
-		ld hl, VDPReg	; VDPReg = $C1A9
+		ld hl, $C1A9	; $C1A9 = $C1A9
 		add hl, de
 		ld a, (hl)
 		and b
@@ -8996,7 +8996,7 @@ _SMS_setSpriteMode:
 		ld hl, $0102
 		call _SMS_VDPturnOnFeature
 		pop bc
-		ld hl, spritesHeight	; spritesHeight = $C1AB
+		ld hl, $C1AB	; $C1AB = $C1AB
 		ld (hl), $10
 		jr ++
 	
@@ -9005,23 +9005,23 @@ _SMS_setSpriteMode:
 		ld hl, $0102
 		call _SMS_VDPturnOffFeature
 		pop bc
-		ld hl, spritesHeight	; spritesHeight = $C1AB
+		ld hl, $C1AB	; $C1AB = $C1AB
 		ld (hl), $08
 ++:	
 		bit 1, c
 		jr z, +
 		ld hl, $0101
 		call _SMS_VDPturnOnFeature
-		ld hl, spritesWidth	; spritesWidth = $C1AC
+		ld hl, $C1AC	; $C1AC = $C1AC
 		ld (hl), $10
-		ld iy, spritesHeight	; spritesHeight = $C1AB
+		ld iy, $C1AB	; $C1AB = $C1AB
 		sla (iy+0)
 		ret
 	
 +:	
 		ld hl, $0101
 		call _SMS_VDPturnOffFeature
-		ld hl, spritesWidth	; spritesWidth = $C1AC
+		ld hl, $C1AC	; $C1AC = $C1AC
 		ld (hl), $08
 		ret
 	
@@ -9077,7 +9077,7 @@ _SMS_setColor:
 	.db $7D $D3 $BE $C9
 	
 _SMS_initSprites:	
-		ld hl, SpriteNextFree	; SpriteNextFree = $C122
+		ld hl, $C122	; $C122 = $C122
 		ld (hl), $00
 		ret
 	
@@ -9091,11 +9091,11 @@ _SMS_addSprite:
 	.db $69 $C9 $2E $FF $C9
 	
 _SMS_finalizeSprites:	
-		ld a, (SpriteNextFree)	; SpriteNextFree = $C122
+		ld a, ($C122)	; $C122 = $C122
 		sub $40
 		ret nc
-		ld bc, SpriteTableY	; SpriteTableY = $C062
-		ld hl, (SpriteNextFree)	; SpriteNextFree = $C122
+		ld bc, $C062	; $C062 = $C062
+		ld hl, ($C122)	; $C122 = $C122
 		ld h, $00
 		add hl, bc
 		ld (hl), $D0
@@ -9104,7 +9104,7 @@ _SMS_finalizeSprites:
 _SMS_copySpritestoSAT:	
 		ld hl, $7F00
 		rst $08	; _LABEL_8_
-		ld bc, SpriteTableY	; SpriteTableY = $C062
+		ld bc, $C062	; $C062 = $C062
 		ld e, $40
 -:	
 		ld a, (bc)
@@ -9118,7 +9118,7 @@ _SMS_copySpritestoSAT:
 		jr nz, -
 		ld hl, $7F80
 		rst $08	; _LABEL_8_
-		ld bc, SpriteTableXN	; SpriteTableXN = $C0A2
+		ld bc, $C0A2	; $C0A2 = $C0A2
 		ld e, $80
 -:	
 		ld a, (bc)
@@ -9133,16 +9133,16 @@ _SMS_copySpritestoSAT:
 		ret
 	
 _SMS_waitForVBlank:	
-		ld hl, VDPBlank	; VDPBlank = $C05A
+		ld hl, $C05A	; $C05A = $C05A
 		ld (hl), $00
 -:	
-		ld hl, VDPBlank	; VDPBlank = $C05A
+		ld hl, $C05A	; $C05A = $C05A
 		bit 0, (hl)
 		jr z, -
 		ret
 	
 _SMS_getKeysStatus:	
-		ld hl, (KeysStatus)	; KeysStatus = $C05E
+		ld hl, ($C05E)	; $C05E = $C05E
 		ret
 	
 ; Data from 1C80 to 1C9C (29 bytes)	
@@ -9194,13 +9194,13 @@ _SMS_isr:
 		ld (SMS_VDPFlags), a	; SMS_VDPFlags = $C05B
 		rlca
 		jr nc, +
-		ld hl, VDPBlank	; VDPBlank = $C05A
+		ld hl, $C05A	; $C05A = $C05A
 		ld (hl), $01
-		ld hl, (KeysStatus)	; KeysStatus = $C05E
+		ld hl, ($C05E)	; $C05E = $C05E
 		ld (PreviousKeysStatus), hl	; PreviousKeysStatus = $C060
 		in a, (Port_IOPort1)
 		cpl
-		ld hl, KeysStatus	; KeysStatus = $C05E
+		ld hl, $C05E	; $C05E = $C05E
 		ld (hl), a
 		in a, (Port_IOPort2)
 		cpl
@@ -9465,7 +9465,7 @@ gsinit:
 		ld a, b
 		or c
 		jr z, +
-		ld de, Finput_manager$curr_joypad1$0$0	; Finput_manager$curr_joypad1$0$0 = $C145
+		ld de, $C145	; $C145 = $C145
 		ld hl, Finput_manager$__xinit_curr_joyp	; Finput_manager$__xinit_curr_joyp = $202B
 		ldir
 +:	
