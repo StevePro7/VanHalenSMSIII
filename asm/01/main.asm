@@ -1376,7 +1376,7 @@ _LABEL_1025_:
 		ret
 	
 	; Data from 1042 to 156E (1325 bytes)
-	.incbin "data/File00_01042_0156E.dat"
+	.incbin ...
 	
 ; Data from 156F to 1639 (203 bytes)	
 _DATA_156F_:	
@@ -2064,83 +2064,83 @@ _LABEL_2093_:
 .ORG $0000	
 	
 	; Data from 8000 to BFFF (16384 bytes)
-	.incbin "data/File01_08000_0BFFF.dat"
+	.incbin ...
 	
 .BANK 3	
 .ORG $0000	
 	
 	; Data from C000 to FFFF (16384 bytes)
-	.incbin "data/File02_0C000_0FFFF.dat"
+	.incbin ...
 	
 .BANK 4	
 .ORG $0000	
 	
 	; Data from 10000 to 13FFF (16384 bytes)
-	.incbin "data/File03_10000_13FFF.dat"
+	.incbin ...
 	
 .BANK 5	
 .ORG $0000	
 	
 	; Data from 14000 to 17FFF (16384 bytes)
-	.incbin "data/File04_14000_17FFF.dat"
+	.incbin ...
 	
 .BANK 6	
 .ORG $0000	
 	
 	; Data from 18000 to 1BFFF (16384 bytes)
-	.incbin "data/File05_18000_1BFFF.dat"
+	.incbin ...
 	
 .BANK 7	
 .ORG $0000	
 	
 	; Data from 1C000 to 1FFFF (16384 bytes)
-	.incbin "data/File06_1C000_1FFFF.dat"
+	.incbin ...
 	
 .BANK 8	
 .ORG $0000	
 	
 	; Data from 20000 to 23FFF (16384 bytes)
-	.incbin "data/File07_20000_23FFF.dat"
+	.incbin ...
 	
 .BANK 9	
 .ORG $0000	
 	
 	; Data from 24000 to 27FFF (16384 bytes)
-	.incbin "data/File08_24000_27FFF.dat"
+	.incbin ...
 	
 .BANK 10	
 .ORG $0000	
 	
 	; Data from 28000 to 2BFFF (16384 bytes)
-	.incbin "data/File09_28000_2BFFF.dat"
+	.incbin ...
 	
 .BANK 11	
 .ORG $0000	
 	
 	; Data from 2C000 to 2FFFF (16384 bytes)
-	.incbin "data/File10_2C000_2FFFF.dat"
+	.incbin ...
 	
 .BANK 12	
 .ORG $0000	
 	
 	; Data from 30000 to 33FFF (16384 bytes)
-	.incbin "data/File11_30000_33FFF.dat"
+	.incbin ...
 	
 .BANK 13	
 .ORG $0000	
 	
 	; Data from 34000 to 37FFF (16384 bytes)
-	.incbin "data/File12_34000_37FFF.dat"
+	.incbin ...
 	
 .BANK 14	
 .ORG $0000	
 	
 	; Data from 38000 to 3BFFF (16384 bytes)
-	.incbin "data/File13_38000_3BFFF.dat"
+	.incbin ...
 	
 .BANK 15	
 .ORG $0000	
 	
 	; Data from 3C000 to 3FFFF (16384 bytes)
-	.incbin "data/File14_3C000_3FFFF.dat"
+	.incbin ...
 	
