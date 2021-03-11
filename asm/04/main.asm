@@ -168,9 +168,9 @@ _LABEL_70_:
 		inc a
 		djnz -
 		xor a
-		ld hl, Lmain.main$global_pause$1$55	; Lmain.main$global_pause$1$55 = $C000
+		ld hl, $C000	; $C000 = $C000
 		ld (hl), a
-		ld de, PSGMusicStatus	; PSGMusicStatus = $C001
+		ld de, $C001	; $C001 = $C001
 		ld bc, $1FF0
 		ldir
 		call gsinit
@@ -360,7 +360,7 @@ C$main.c$27$3$57:
 		or a
 		jr z, A$main$174
 		call A$_sms_manager$837
-		ld iy, Lmain.main$global_pause$1$55	; Lmain.main$global_pause$1$55 = $C000
+		ld iy, $C000	; $C000 = $C000
 		ld a, (iy+0)
 		xor $01
 		ld (iy+0), a
@@ -374,7 +374,7 @@ C$main.c$37$5$60:
 		call A$_snd_manager$292
 A$main$174:	
 C$main.c$41$3$57:	
-		ld hl, Lmain.main$global_pause$1$55	; Lmain.main$global_pause$1$55 = $C000
+		ld hl, $C000	; $C000 = $C000
 		bit 0, (hl)
 		jr nz, A$main$140
 		call A$_sms_manager$735
@@ -388,26 +388,26 @@ C$main.c$41$3$57:
 		jr A$main$140
 	
 _PSGStop:	
-		ld a, (PSGMusicStatus)	; PSGMusicStatus = $C001
+		ld a, ($C001)	; $C001 = $C001
 		or a
 		ret z
 		ld a, $9F
 		out (Port_PSG), a
 		ld a, $BF
 		out (Port_PSG), a
-		ld a, (PSGChannel2SFX)	; PSGChannel2SFX = $C016
+		ld a, ($C016)	; $C016 = $C016
 		or a
 		jr nz, +
 		ld a, $DF
 		out (Port_PSG), a
 +:	
-		ld a, (PSGChannel3SFX)	; PSGChannel3SFX = $C017
+		ld a, ($C017)	; $C017 = $C017
 		or a
 		jr nz, +
 		ld a, $FF
 		out (Port_PSG), a
 +:	
-		ld hl, PSGMusicStatus	; PSGMusicStatus = $C001
+		ld hl, $C001	; $C001 = $C001
 		ld (hl), $00
 		ret
 	
@@ -453,16 +453,16 @@ _PSGRestoreVolumes:
 		ld ix, $0000
 		add ix, sp
 		push af
-		ld iy, PSGMusicVolumeAttenuation	; PSGMusicVolumeAttenuation = $C00B
+		ld iy, $C00B	; $C00B = $C00B
 		ld a, (iy+0)
 		ld (ix-2), a
 		xor a
 		ld (ix-1), a
 		ld c, (iy+0)
-		ld a, (PSGMusicStatus)	; PSGMusicStatus = $C001
+		ld a, ($C001)	; $C001 = $C001
 		or a
 		jr z, _LABEL_3C7_
-		ld a, (PSGChan0Volume)	; PSGChan0Volume = $C00F
+		ld a, ($C00F)	; $C00F = $C00F
 		and $0F
 		ld e, a
 		ld d, $00
@@ -481,7 +481,7 @@ _PSGRestoreVolumes:
 		jr ++
 	
 +:	
-		ld a, (PSGChan0Volume)	; PSGChan0Volume = $C00F
+		ld a, ($C00F)	; $C00F = $C00F
 		and $0F
 		add a, c
 		ld e, a
@@ -491,7 +491,7 @@ _PSGRestoreVolumes:
 		ld a, e
 		or $90
 		out (Port_PSG), a
-		ld a, (PSGChan1Volume)	; PSGChan1Volume = $C010
+		ld a, ($C010)	; $C010 = $C010
 		and $0F
 		ld e, a
 		ld d, $00
@@ -510,7 +510,7 @@ _PSGRestoreVolumes:
 		jr ++
 	
 +:	
-		ld a, (PSGChan1Volume)	; PSGChan1Volume = $C010
+		ld a, ($C010)	; $C010 = $C010
 		and $0F
 		add a, c
 		ld e, a
@@ -521,19 +521,19 @@ _PSGRestoreVolumes:
 		or $B0
 		out (Port_PSG), a
 _LABEL_3C7_:	
-		ld a, (PSGChannel2SFX)	; PSGChannel2SFX = $C016
+		ld a, ($C016)	; $C016 = $C016
 		or a
 		jr z, +
-		ld a, (PSGSFXChan2Volume)	; PSGSFXChan2Volume = $C018
+		ld a, ($C018)	; $C018 = $C018
 		or $D0
 		out (Port_PSG), a
 		jr +++
 	
 +:	
-		ld a, (PSGMusicStatus)	; PSGMusicStatus = $C001
+		ld a, ($C001)	; $C001 = $C001
 		or a
 		jr z, +++
-		ld a, (PSGChan2Volume)	; PSGChan2Volume = $C011
+		ld a, ($C011)	; $C011 = $C011
 		and $0F
 		ld e, a
 		ld d, $00
@@ -552,7 +552,7 @@ _LABEL_3C7_:
 		jr ++
 	
 +:	
-		ld a, (PSGChan2Volume)	; PSGChan2Volume = $C011
+		ld a, ($C011)	; $C011 = $C011
 		and $0F
 		add a, c
 		ld e, a
@@ -563,19 +563,19 @@ _LABEL_3C7_:
 		or $D0
 		out (Port_PSG), a
 +++:	
-		ld a, (PSGChannel3SFX)	; PSGChannel3SFX = $C017
+		ld a, ($C017)	; $C017 = $C017
 		or a
 		jr z, +
-		ld a, (PSGSFXChan3Volume)	; PSGSFXChan3Volume = $C019
+		ld a, ($C019)	; $C019 = $C019
 		or $F0
 		out (Port_PSG), a
 		jr +++
 	
 +:	
-		ld a, (PSGMusicStatus)	; PSGMusicStatus = $C001
+		ld a, ($C001)	; $C001 = $C001
 		or a
 		jr z, +++
-		ld a, (PSGChan3Volume)	; PSGChan3Volume = $C012
+		ld a, ($C012)	; $C012 = $C012
 		and $0F
 		ld l, a
 		ld h, $00
@@ -594,7 +594,7 @@ _LABEL_3C7_:
 		jr ++
 	
 +:	
-		ld a, (PSGChan3Volume)	; PSGChan3Volume = $C012
+		ld a, ($C012)	; $C012 = $C012
 		and $0F
 		add a, c
 		ld c, a
@@ -632,29 +632,29 @@ _PSGSFXStop:
 		ld ix, $0000
 		add ix, sp
 		push af
-		ld a, (PSGSFXStatus)	; PSGSFXStatus = $C01A
+		ld a, ($C01A)	; $C01A = $C01A
 		or a
 		jp z, _LABEL_602_
-		ld iy, PSGMusicVolumeAttenuation	; PSGMusicVolumeAttenuation = $C00B
+		ld iy, $C00B	; $C00B = $C00B
 		ld a, (iy+0)
 		ld (ix-2), a
 		xor a
 		ld (ix-1), a
 		ld c, (iy+0)
-		ld a, (PSGChannel2SFX)	; PSGChannel2SFX = $C016
+		ld a, ($C016)	; $C016 = $C016
 		or a
 		jr z, _LABEL_5B1_
-		ld a, (PSGMusicStatus)	; PSGMusicStatus = $C001
+		ld a, ($C001)	; $C001 = $C001
 		or a
 		jr z, _LABEL_5A8_
-		ld a, (PSGChan2LowTone)	; PSGChan2LowTone = $C013
+		ld a, ($C013)	; $C013 = $C013
 		and $0F
 		or $C0
 		out (Port_PSG), a
-		ld a, (PSGChan2HighTone)	; PSGChan2HighTone = $C014
+		ld a, ($C014)	; $C014 = $C014
 		and $3F
 		out (Port_PSG), a
-		ld a, (PSGChan2Volume)	; PSGChan2Volume = $C011
+		ld a, ($C011)	; $C011 = $C011
 		and $0F
 		ld e, a
 		ld d, $00
@@ -673,7 +673,7 @@ _PSGSFXStop:
 		jr ++
 	
 +:	
-		ld a, (PSGChan2Volume)	; PSGChan2Volume = $C011
+		ld a, ($C011)	; $C011 = $C011
 		and $0F
 		add a, c
 		ld e, a
@@ -689,20 +689,20 @@ _LABEL_5A8_:
 		ld a, $DF
 		out (Port_PSG), a
 +:	
-		ld hl, PSGChannel2SFX	; PSGChannel2SFX = $C016
+		ld hl, $C016	; $C016 = $C016
 		ld (hl), $00
 _LABEL_5B1_:	
-		ld a, (PSGChannel3SFX)	; PSGChannel3SFX = $C017
+		ld a, ($C017)	; $C017 = $C017
 		or a
 		jr z, _LABEL_5FD_
-		ld a, (PSGMusicStatus)	; PSGMusicStatus = $C001
+		ld a, ($C001)	; $C001 = $C001
 		or a
 		jr z, +++
-		ld a, (PSGChan3LowTone)	; PSGChan3LowTone = $C015
+		ld a, ($C015)	; $C015 = $C015
 		and $0F
 		or $E0
 		out (Port_PSG), a
-		ld a, (PSGChan3Volume)	; PSGChan3Volume = $C012
+		ld a, ($C012)	; $C012 = $C012
 		and $0F
 		ld l, a
 		ld h, $00
@@ -721,7 +721,7 @@ _LABEL_5B1_:
 		jr ++
 	
 +:	
-		ld a, (PSGChan3Volume)	; PSGChan3Volume = $C012
+		ld a, ($C012)	; $C012 = $C012
 		and $0F
 		add a, c
 		ld c, a
@@ -737,10 +737,10 @@ _LABEL_5B1_:
 		ld a, $FF
 		out (Port_PSG), a
 ++++:	
-		ld hl, PSGChannel3SFX	; PSGChannel3SFX = $C017
+		ld hl, $C017	; $C017 = $C017
 		ld (hl), $00
 _LABEL_5FD_:	
-		ld hl, PSGSFXStatus	; PSGSFXStatus = $C01A
+		ld hl, $C01A	; $C01A = $C01A
 		ld (hl), $00
 _LABEL_602_:	
 		ld sp, ix
@@ -770,53 +770,53 @@ _PSGSFXPlayLoop:
 	.db $C9
 	
 _PSGFrame:	
-		ld a, (PSGMusicStatus)	; PSGMusicStatus = $C001
+		ld a, ($C001)	; $C001 = $C001
 		or a
 		ret z
-		ld a, (PSGMusicSkipFrames)	; PSGMusicSkipFrames = $C008
+		ld a, ($C008)	; $C008 = $C008
 		or a
 		jp nz, _LABEL_717_
-		ld hl, (PSGMusicPointer)	; PSGMusicPointer = $C004
+		ld hl, ($C004)	; $C004 = $C004
 _LABEL_692_:	
 		ld b, (hl)
 		inc hl
-		ld a, (PSGMusicSubstringLen)	; PSGMusicSubstringLen = $C00C
+		ld a, ($C00C)	; $C00C = $C00C
 		or a
 		jr z, +
 		dec a
-		ld (PSGMusicSubstringLen), a	; PSGMusicSubstringLen = $C00C
+		ld ($C00C), a	; $C00C = $C00C
 		jr nz, +
-		ld hl, (PSGMusicSubstringRetAddr)	; PSGMusicSubstringRetAddr = $C00D
+		ld hl, ($C00D)	; $C00D = $C00D
 +:	
 		ld a, b
 		cp $80
 		jr c, _LABEL_71C_
-		ld (PSGMusicLastLatch), a	; PSGMusicLastLatch = $C00A
+		ld ($C00A), a	; $C00A = $C00A
 		bit 4, a
 		jr nz, ++
 		bit 6, a
 		jp z, _LABEL_743_
 		bit 5, a
 		jr z, +
-		ld (PSGChan3LowTone), a	; PSGChan3LowTone = $C015
-		ld a, (PSGChannel3SFX)	; PSGChannel3SFX = $C017
+		ld ($C015), a	; $C015 = $C015
+		ld a, ($C017)	; $C017 = $C017
 		or a
 		jp nz, _LABEL_692_
-		ld a, (PSGChan3LowTone)	; PSGChan3LowTone = $C015
+		ld a, ($C015)	; $C015 = $C015
 		and $03
 		cp $03
 		jr nz, _LABEL_742_
-		ld a, (PSGSFXStatus)	; PSGSFXStatus = $C01A
+		ld a, ($C01A)	; $C01A = $C01A
 		or a
 		jr z, _LABEL_742_
-		ld (PSGChannel3SFX), a	; PSGChannel3SFX = $C017
+		ld ($C017), a	; $C017 = $C017
 		ld a, $FF
 		out (Port_PSG), a
 		jp _LABEL_692_
 	
 +:	
-		ld (PSGChan2LowTone), a	; PSGChan2LowTone = $C013
-		ld a, (PSGChannel2SFX)	; PSGChannel2SFX = $C016
+		ld ($C013), a	; $C013 = $C013
+		ld a, ($C016)	; $C016 = $C016
 		or a
 		jr z, _LABEL_742_
 		jp _LABEL_692_
@@ -826,38 +826,38 @@ _LABEL_692_:
 		jr nz, ++
 		bit 5, a
 		jr z, +
-		ld (PSGChan1Volume), a	; PSGChan1Volume = $C010
+		ld ($C010), a	; $C010 = $C010
 		jp _LABEL_749_
 	
 +:	
-		ld (PSGChan0Volume), a	; PSGChan0Volume = $C00F
+		ld ($C00F), a	; $C00F = $C00F
 		jp _LABEL_749_
 	
 ++:	
 		bit 5, a
 		jr z, +
-		ld (PSGChan3Volume), a	; PSGChan3Volume = $C012
-		ld a, (PSGChannel3SFX)	; PSGChannel3SFX = $C017
+		ld ($C012), a	; $C012 = $C012
+		ld a, ($C017)	; $C017 = $C017
 		or a
 		jr z, _LABEL_748_
 		jp _LABEL_692_
 	
 +:	
-		ld (PSGChan2Volume), a	; PSGChan2Volume = $C011
-		ld a, (PSGChannel2SFX)	; PSGChannel2SFX = $C016
+		ld ($C011), a	; $C011 = $C011
+		ld a, ($C016)	; $C016 = $C016
 		or a
 		jr z, _LABEL_748_
 		jp _LABEL_692_
 	
 _LABEL_717_:	
 		dec a
-		ld (PSGMusicSkipFrames), a	; PSGMusicSkipFrames = $C008
+		ld ($C008), a	; $C008 = $C008
 		ret
 	
 _LABEL_71C_:	
 		cp $40
 		jr c, +
-		ld a, (PSGMusicLastLatch)	; PSGMusicLastLatch = $C00A
+		ld a, ($C00A)	; $C00A = $C00A
 		jp +++
 	
 +:	
@@ -865,9 +865,9 @@ _LABEL_71C_:
 		jr z, +
 		jr c, ++
 		and $07
-		ld (PSGMusicSkipFrames), a	; PSGMusicSkipFrames = $C008
+		ld ($C008), a	; $C008 = $C008
 +:	
-		ld (PSGMusicPointer), hl	; PSGMusicPointer = $C004
+		ld ($C004), hl	; $C004 = $C004
 		ret
 	
 ++:	
@@ -891,7 +891,7 @@ _LABEL_749_:
 		ld c, a
 		and $0F
 		ld b, a
-		ld a, (PSGMusicVolumeAttenuation)	; PSGMusicVolumeAttenuation = $C00B
+		ld a, ($C00B)	; $C00B = $C00B
 		add a, b
 		cp $0F
 		jr c, +
@@ -910,32 +910,32 @@ _LABEL_749_:
 		jp _LABEL_742_
 	
 ++++:	
-		ld (PSGMusicLoopPoint), hl	; PSGMusicLoopPoint = $C006
+		ld ($C006), hl	; $C006 = $C006
 		jp _LABEL_692_
 	
 +++++:	
-		ld a, (PSGLoopFlag)	; PSGLoopFlag = $C009
+		ld a, ($C009)	; $C009 = $C009
 		or a
 		jp z, _PSGStop
-		ld hl, (PSGMusicLoopPoint)	; PSGMusicLoopPoint = $C006
+		ld hl, ($C006)	; $C006 = $C006
 		jp _LABEL_692_
 	
 _LABEL_77B_:	
 		sub $04
-		ld (PSGMusicSubstringLen), a	; PSGMusicSubstringLen = $C00C
+		ld ($C00C), a	; $C00C = $C00C
 		ld c, (hl)
 		inc hl
 		ld b, (hl)
 		inc hl
-		ld (PSGMusicSubstringRetAddr), hl	; PSGMusicSubstringRetAddr = $C00D
-		ld hl, (PSGMusicStart)	; PSGMusicStart = $C002
+		ld ($C00D), hl	; $C00D = $C00D
+		ld hl, ($C002)	; $C002 = $C002
 		add hl, bc
 		jp _LABEL_692_
 	
 ++++++:	
 		ld a, b
-		ld (PSGChan2HighTone), a	; PSGChan2HighTone = $C014
-		ld a, (PSGChannel2SFX)	; PSGChannel2SFX = $C016
+		ld ($C014), a	; $C014 = $C014
+		ld a, ($C016)	; $C016 = $C016
 		or a
 		jr z, _LABEL_742_
 		jp _LABEL_692_
@@ -944,23 +944,23 @@ _LABEL_77B_:
 	.db $C9
 	
 _PSGSFXFrame:	
-		ld a, (PSGSFXStatus)	; PSGSFXStatus = $C01A
+		ld a, ($C01A)	; $C01A = $C01A
 		or a
 		ret z
-		ld a, (PSGSFXSkipFrames)	; PSGSFXSkipFrames = $C021
+		ld a, ($C021)	; $C021 = $C021
 		or a
 		jp nz, +++
-		ld hl, (PSGSFXPointer)	; PSGSFXPointer = $C01D
+		ld hl, ($C01D)	; $C01D = $C01D
 _LABEL_7AB_:	
 		ld b, (hl)
 		inc hl
-		ld a, (PSGSFXSubstringLen)	; PSGSFXSubstringLen = $C023
+		ld a, ($C023)	; $C023 = $C023
 		or a
 		jr z, +
 		dec a
-		ld (PSGSFXSubstringLen), a	; PSGSFXSubstringLen = $C023
+		ld ($C023), a	; $C023 = $C023
 		jr nz, +
-		ld hl, (PSGSFXSubstringRetAddr)	; PSGSFXSubstringRetAddr = $C024
+		ld hl, ($C024)	; $C024 = $C024
 +:	
 		ld a, b
 		cp $40
@@ -969,18 +969,18 @@ _LABEL_7AB_:
 		jr z, ++
 		bit 5, a
 		jr nz, +
-		ld (PSGSFXChan2Volume), a	; PSGSFXChan2Volume = $C018
+		ld ($C018), a	; $C018 = $C018
 		jr ++
 	
 +:	
-		ld (PSGSFXChan3Volume), a	; PSGSFXChan3Volume = $C019
+		ld ($C019), a	; $C019 = $C019
 ++:	
 		out (Port_PSG), a
 		jp _LABEL_7AB_
 	
 +++:	
 		dec a
-		ld (PSGSFXSkipFrames), a	; PSGSFXSkipFrames = $C021
+		ld ($C021), a	; $C021 = $C021
 		ret
 	
 ++++:	
@@ -988,9 +988,9 @@ _LABEL_7AB_:
 		jr z, +
 		jr c, ++
 		and $07
-		ld (PSGSFXSkipFrames), a	; PSGSFXSkipFrames = $C021
+		ld ($C021), a	; $C021 = $C021
 +:	
-		ld (PSGSFXPointer), hl	; PSGSFXPointer = $C01D
+		ld ($C01D), hl	; $C01D = $C01D
 		ret
 	
 ++:	
@@ -1003,26 +1003,26 @@ _LABEL_7AB_:
 		ret
 	
 +:	
-		ld (PSGSFXLoopPoint), hl	; PSGSFXLoopPoint = $C01F
+		ld ($C01F), hl	; $C01F = $C01F
 		jp _LABEL_7AB_
 	
 ++:	
-		ld a, (PSGSFXLoopFlag)	; PSGSFXLoopFlag = $C022
+		ld a, ($C022)	; $C022 = $C022
 		or a
 		jp z, _PSGSFXStop
-		ld hl, (PSGSFXLoopPoint)	; PSGSFXLoopPoint = $C01F
-		ld (PSGSFXPointer), hl	; PSGSFXPointer = $C01D
+		ld hl, ($C01F)	; $C01F = $C01F
+		ld ($C01D), hl	; $C01D = $C01D
 		jp _LABEL_7AB_
 	
 +++:	
 		sub $04
-		ld (PSGSFXSubstringLen), a	; PSGSFXSubstringLen = $C023
+		ld ($C023), a	; $C023 = $C023
 		ld c, (hl)
 		inc hl
 		ld b, (hl)
 		inc hl
-		ld (PSGSFXSubstringRetAddr), hl	; PSGSFXSubstringRetAddr = $C024
-		ld hl, (PSGSFXStart)	; PSGSFXStart = $C01B
+		ld ($C024), hl	; $C024 = $C024
+		ld hl, ($C01B)	; $C01B = $C01B
 		add hl, bc
 		jp _LABEL_7AB_
 	
@@ -5683,9 +5683,9 @@ _engine_screen_manager_init:
 		ld hl, A$record_screen$71	; A$record_screen$71 = $14E2
 		ld (_RAM_C037_), hl
 		ld hl, A$none_screen$73	; A$none_screen$73 = $1196
-		ld (Fscreen_manager$update_method$0$), hl	; Fscreen_manager$update_method$0$ = $C039
+		ld ($C039), hl	; $C039 = $C039
 		ld hl, A$splash_screen$109	; A$splash_screen$109 = $11B9
-		ld (Fscreen_manager$update_method$0$ + 2), hl	; Fscreen_manager$update_method$0$ + 2 = $C03B
+		ld ($C039 + 2), hl	; $C039 + 2 = $C03B
 		ld hl, A$title_screen$229	; A$title_screen$229 = $12BE
 		ld (_RAM_C03D_), hl
 		ld hl, A$scroll_screen$78	; A$scroll_screen$78 = $138F
@@ -5720,7 +5720,7 @@ _engine_screen_manager_update:
 		call ___sdcc_call_hl
 A$screen_manager$193:	
 C$screen_manager.c$49$1$11:	
-		ld bc, Fscreen_manager$update_method$0$	; Fscreen_manager$update_method$0$ = $C039
+		ld bc, $C039	; $C039 = $C039
 		ld iy, Fscreen_manager$curr_screen_type	; Fscreen_manager$curr_screen_type = $C02B
 		ld l, (iy+0)
 		ld h, $00
@@ -9035,7 +9035,7 @@ _SMS_setSpritePaletteColor:
 		add hl, sp
 		ld c, (hl)
 		ld b, $00
-		ld hl, PSGChan1Volume	; PSGChan1Volume = $C010
+		ld hl, $C010	; $C010 = $C010
 		add hl, bc
 		rst $08	; _LABEL_8_
 		ld hl, _SMS_crt0_RST08 - 3	; _SMS_crt0_RST08 - 3 = $0003
@@ -9045,7 +9045,7 @@ _SMS_setSpritePaletteColor:
 		ret
 	
 _SMS_loadBGPalette:	
-		ld de, Lmain.main$global_pause$1$55	; Lmain.main$global_pause$1$55 = $C000
+		ld de, $C000	; $C000 = $C000
 		ld c, Port_VDPAddress
 		di
 		out (c), e
@@ -9059,7 +9059,7 @@ _SMS_loadBGPalette:
 		ret
 	
 _SMS_loadSpritePalette:	
-		ld de, PSGChan1Volume	; PSGChan1Volume = $C010
+		ld de, $C010	; $C010 = $C010
 		ld c, Port_VDPAddress
 		di
 		out (c), e
