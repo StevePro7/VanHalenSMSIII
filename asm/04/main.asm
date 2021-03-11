@@ -9161,12 +9161,12 @@ _SMS_getKeysReleased:
 	.db $21 $60 $C0 $FD $A6 $00 $6F $78 $FD $A6 $01 $67 $C9
 	
 _SMS_queryPauseRequested:	
-		ld iy, PauseRequested	; PauseRequested = $C05C
+		ld iy, $C05C	; $C05C = $C05C
 		ld l, (iy+0)
 		ret
 	
 _SMS_resetPauseRequest:	
-		ld hl, PauseRequested	; PauseRequested = $C05C
+		ld hl, $C05C	; $C05C = $C05C
 		ld (hl), $00
 		ret
 	
@@ -9191,13 +9191,13 @@ _SMS_isr:
 		push af
 		push hl
 		in a, (Port_VDPStatus)
-		ld (SMS_VDPFlags), a	; SMS_VDPFlags = $C05B
+		ld ($C05B), a	; $C05B = $C05B
 		rlca
 		jr nc, +
 		ld hl, $C05A	; $C05A = $C05A
 		ld (hl), $01
 		ld hl, ($C05E)	; $C05E = $C05E
-		ld (PreviousKeysStatus), hl	; PreviousKeysStatus = $C060
+		ld ($C060), hl	; $C060 = $C060
 		in a, (Port_IOPort1)
 		cpl
 		ld hl, $C05E	; $C05E = $C05E
@@ -9212,7 +9212,7 @@ _SMS_isr:
 		push bc
 		push de
 		push iy
-		ld hl, (SMS_theLineInterruptHandler)	; SMS_theLineInterruptHandler = $C123
+		ld hl, ($C123)	; $C123 = $C123
 		call ___sdcc_call_hl
 		pop iy
 		pop de
@@ -9229,7 +9229,7 @@ _SMS_nmi_isr:
 		push de
 		push hl
 		push iy
-		ld hl, PauseRequested	; PauseRequested = $C05C
+		ld hl, $C05C	; $C05C = $C05C
 		ld (hl), $01
 		pop iy
 		pop hl
@@ -9306,7 +9306,7 @@ _SMS_loadPSGaidencompressedTiles:
 _LABEL_1F6D_:	
 		push bc
 		ld b, $04
-		ld de, decompBuffer	; decompBuffer = $C125
+		ld de, $C125	; $C125 = $C125
 		ld c, (ix+0)
 		inc ix
 _LABEL_1F78_:	
@@ -9325,7 +9325,7 @@ _LABEL_1F78_:
 		ld e, a
 		ld a, d
 		ld d, $00
-		ld iy, decompBuffer	; decompBuffer = $C125
+		ld iy, $C125	; $C125 = $C125
 		add iy, de
 		ex de, hl
 		cp $03
@@ -9412,7 +9412,7 @@ _LABEL_1FD9_:
 		jp nz, _LABEL_1F78_
 		ld de, _SMS_crt0_RST08 + 2	; _SMS_crt0_RST08 + 2 = $0008
 		ld c, e
-		ld hl, decompBuffer	; decompBuffer = $C125
+		ld hl, $C125	; $C125 = $C125
 --:	
 		ld b, $04
 		push hl
