@@ -144,7 +144,7 @@ _LABEL_70_:
 		inc a
 		djnz -
 		xor a
-		ld hl, $C000	; $C000 = $C000
+		ld hl, pause_status	; pause_status = pause_status
 		ld (hl), a
 		ld de, $C001	; $C001 = $C001
 		ld bc, $1FF0
@@ -336,7 +336,7 @@ C$main.c$27$3$57:
 		or a
 		jr z, A$main$174
 		call A$_sms_manager$837
-		ld iy, $C000	; $C000 = $C000
+		ld iy, pause_status	; pause_status = pause_status
 		ld a, (iy+0)
 		xor $01
 		ld (iy+0), a
@@ -350,7 +350,7 @@ C$main.c$37$5$60:
 		call A$_snd_manager$292
 A$main$174:	
 C$main.c$41$3$57:	
-		ld hl, $C000	; $C000 = $C000
+		ld hl, pause_status	; pause_status = pause_status
 		bit 0, (hl)
 		jr nz, A$main$140
 		call A$_sms_manager$735
@@ -9021,7 +9021,7 @@ _SMS_setSpritePaletteColor:
 		ret
 	
 _SMS_loadBGPalette:	
-		ld de, $C000	; $C000 = $C000
+		ld de, pause_status	; pause_status = pause_status
 		ld c, Port_VDPAddress
 		di
 		out (c), e
