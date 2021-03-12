@@ -146,7 +146,7 @@ _LABEL_70_:
 		xor a
 		ld hl, pause_status	; pause_status = pause_status
 		ld (hl), a
-		ld de, $C001	; $C001 = $C001
+		ld de, PSGMusicStatus	; PSGMusicStatus = PSGMusicStatus
 		ld bc, $1FF0
 		ldir
 		call gsinit
@@ -364,7 +364,7 @@ C$main.c$41$3$57:
 		jr A$main$140
 	
 _PSGStop:	
-		ld a, ($C001)	; $C001 = $C001
+		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		ret z
 		ld a, $9F
@@ -383,7 +383,7 @@ _PSGStop:
 		ld a, $FF
 		out (Port_PSG), a
 +:	
-		ld hl, $C001	; $C001 = $C001
+		ld hl, PSGMusicStatus	; PSGMusicStatus = PSGMusicStatus
 		ld (hl), $00
 		ret
 	
@@ -435,7 +435,7 @@ _PSGRestoreVolumes:
 		xor a
 		ld (ix-1), a
 		ld c, (iy+0)
-		ld a, ($C001)	; $C001 = $C001
+		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		jr z, _LABEL_3C7_
 		ld a, ($C00F)	; $C00F = $C00F
@@ -506,7 +506,7 @@ _LABEL_3C7_:
 		jr +++
 	
 +:	
-		ld a, ($C001)	; $C001 = $C001
+		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		jr z, +++
 		ld a, ($C011)	; $C011 = $C011
@@ -548,7 +548,7 @@ _LABEL_3C7_:
 		jr +++
 	
 +:	
-		ld a, ($C001)	; $C001 = $C001
+		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		jr z, +++
 		ld a, ($C012)	; $C012 = $C012
@@ -620,7 +620,7 @@ _PSGSFXStop:
 		ld a, ($C016)	; $C016 = $C016
 		or a
 		jr z, _LABEL_5B1_
-		ld a, ($C001)	; $C001 = $C001
+		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		jr z, _LABEL_5A8_
 		ld a, ($C013)	; $C013 = $C013
@@ -671,7 +671,7 @@ _LABEL_5B1_:
 		ld a, ($C017)	; $C017 = $C017
 		or a
 		jr z, _LABEL_5FD_
-		ld a, ($C001)	; $C001 = $C001
+		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		jr z, +++
 		ld a, ($C015)	; $C015 = $C015
@@ -746,7 +746,7 @@ _PSGSFXPlayLoop:
 	.db $C9
 	
 _PSGFrame:	
-		ld a, ($C001)	; $C001 = $C001
+		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		ret z
 		ld a, ($C008)	; $C008 = $C008
