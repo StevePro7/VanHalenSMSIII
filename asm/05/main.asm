@@ -551,7 +551,7 @@ _LABEL_3C7_:
 		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		jr z, +++
-		ld a, ($C012)	; $C012 = $C012
+		ld a, (PSGChan3Volume)	; PSGChan3Volume = PSGChan3Volume
 		and $0F
 		ld l, a
 		ld h, $00
@@ -570,7 +570,7 @@ _LABEL_3C7_:
 		jr ++
 	
 +:	
-		ld a, ($C012)	; $C012 = $C012
+		ld a, (PSGChan3Volume)	; PSGChan3Volume = PSGChan3Volume
 		and $0F
 		add a, c
 		ld c, a
@@ -623,7 +623,7 @@ _PSGSFXStop:
 		ld a, (PSGMusicStatus)	; PSGMusicStatus = PSGMusicStatus
 		or a
 		jr z, _LABEL_5A8_
-		ld a, ($C013)	; $C013 = $C013
+		ld a, (PSGChan2LowTone)	; PSGChan2LowTone = PSGChan2LowTone
 		and $0F
 		or $C0
 		out (Port_PSG), a
@@ -678,7 +678,7 @@ _LABEL_5B1_:
 		and $0F
 		or $E0
 		out (Port_PSG), a
-		ld a, ($C012)	; $C012 = $C012
+		ld a, (PSGChan3Volume)	; PSGChan3Volume = PSGChan3Volume
 		and $0F
 		ld l, a
 		ld h, $00
@@ -697,7 +697,7 @@ _LABEL_5B1_:
 		jr ++
 	
 +:	
-		ld a, ($C012)	; $C012 = $C012
+		ld a, (PSGChan3Volume)	; PSGChan3Volume = PSGChan3Volume
 		and $0F
 		add a, c
 		ld c, a
@@ -791,7 +791,7 @@ _LABEL_692_:
 		jp _LABEL_692_
 	
 +:	
-		ld ($C013), a	; $C013 = $C013
+		ld (PSGChan2LowTone), a	; PSGChan2LowTone = PSGChan2LowTone
 		ld a, ($C016)	; $C016 = $C016
 		or a
 		jr z, _LABEL_742_
@@ -812,7 +812,7 @@ _LABEL_692_:
 ++:	
 		bit 5, a
 		jr z, +
-		ld ($C012), a	; $C012 = $C012
+		ld (PSGChan3Volume), a	; PSGChan3Volume = PSGChan3Volume
 		ld a, ($C017)	; $C017 = $C017
 		or a
 		jr z, _LABEL_748_
