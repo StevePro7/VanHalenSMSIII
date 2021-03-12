@@ -3,39 +3,6 @@
 .include "devkit/define_manager.inc"
 
 	
-.enum $C000 export	
-_RAM_C000_ db	
-_RAM_C001_ db	
-_RAM_C002_ dw	
-_RAM_C004_ dw	
-_RAM_C006_ dw	
-_RAM_C008_ db	
-_RAM_C009_ db	
-_RAM_C00A_ db	
-_RAM_C00B_ db	
-_RAM_C00C_ db	
-_RAM_C00D_ dw	
-_RAM_C00F_ db	
-_RAM_C010_ db	
-_RAM_C011_ db	
-_RAM_C012_ db	
-_RAM_C013_ db	
-_RAM_C014_ db	
-_RAM_C015_ db	
-_RAM_C016_ db	
-_RAM_C017_ db	
-_RAM_C018_ db	
-_RAM_C019_ db	
-_RAM_C01A_ db	
-_RAM_C01B_ dw	
-_RAM_C01D_ dw	
-_RAM_C01F_ dw	
-_RAM_C021_ db	
-_RAM_C022_ db	
-_RAM_C023_ db	
-_RAM_C024_ dw	
-.ende	
-	
 .enum $C02B export	
 _RAM_C02B_ db	
 _RAM_C02C_ db	
