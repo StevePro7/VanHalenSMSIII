@@ -115,9 +115,11 @@ prev_joypad1 dw							; Finput_manager$prev_joypad1$0$0 = $C148       ; todo upd
 .enum $C162 export	
 record_tiles_data db		            ; record_tiles_data = $C162
 .ende	
+
 .enum $C17A export	
 record_tilemap_data db                  ; record_tilemap_data = $C17A	
 .ende
+
 .enum $C192 export	
 record_palette_data db                  ; record_palette_data = $C192	
 .ende
