@@ -1,7 +1,6 @@
 .include "devkit/memory_manager.inc"
-;.include "devkit/enum_manager.inc"
-;.include "devkit/define_manager.inc"
-
+.include "devkit/enum_manager.inc"
+.include "devkit/define_manager.inc"
 
 	
 .enum $C000 export	
@@ -89,20 +88,11 @@ _RAM_C1AB_ db
 _RAM_C1AC_ db	
 .ende	
 	
-.enum $FFFC export	
-_RAM_FFFC_ db	
-.ende	
+;.enum $FFFC export	
+;_RAM_FFFC_ db	
+;.ende	
 	
-; Ports	
-.define Port_PSG $7F	
-.define Port_VDPData $BE	
-.define Port_VDPAddress $BF	
-	
-; Input Ports	
-.define Port_VCounter $7E	
-.define Port_VDPStatus $BF	
-.define Port_IOPort1 $DC	
-.define Port_IOPort2 $DD	
+
 	
 .BANK 0 SLOT 0	
 .ORG $0000	
