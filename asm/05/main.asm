@@ -752,7 +752,7 @@ _PSGFrame:
 		ld a, ($C008)	; $C008 = $C008
 		or a
 		jp nz, _LABEL_717_
-		ld hl, ($C004)	; $C004 = $C004
+		ld hl, (PSGMusicPointer)	; PSGMusicPointer = PSGMusicPointer
 _LABEL_692_:	
 		ld b, (hl)
 		inc hl
@@ -843,7 +843,7 @@ _LABEL_71C_:
 		and $07
 		ld ($C008), a	; $C008 = $C008
 +:	
-		ld ($C004), hl	; $C004 = $C004
+		ld (PSGMusicPointer), hl	; PSGMusicPointer = PSGMusicPointer
 		ret
 	
 ++:	
@@ -904,7 +904,7 @@ _LABEL_77B_:
 		ld b, (hl)
 		inc hl
 		ld ($C00D), hl	; $C00D = $C00D
-		ld hl, ($C002)	; $C002 = $C002
+		ld hl, (PSGMusicStart)	; PSGMusicStart = PSGMusicStart
 		add hl, bc
 		jp _LABEL_692_
 	
