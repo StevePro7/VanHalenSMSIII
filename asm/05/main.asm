@@ -1,22 +1,8 @@
-; This disassembly was created using Emulicious (http://www.emulicious.net)	
-.MEMORYMAP	
-SLOTSIZE $7FF0	
-SLOT 0 $0000	
-SLOTSIZE $10	
-SLOT 1 $7FF0	
-SLOTSIZE $4000	
-SLOT 2 $8000	
-DEFAULTSLOT 2	
-.ENDME	
-.ROMBANKMAP	
-BANKSTOTAL 16	
-BANKSIZE $7FF0	
-BANKS 1	
-BANKSIZE $10	
-BANKS 1	
-BANKSIZE $4000	
-BANKS 14	
-.ENDRO	
+.include "devkit/memory_manager.inc"
+;.include "devkit/enum_manager.inc"
+;.include "devkit/define_manager.inc"
+
+
 	
 .enum $C000 export	
 _RAM_C000_ db	
