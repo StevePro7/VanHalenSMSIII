@@ -126,7 +126,7 @@ record_palette_data db                  ; record_palette_data = $C192
 VDPReg db                               ; VDPReg = $C1A9
 .ende
 
-.enum $C1AC export	
+.enum $C1AB export	
 spritesHeight db		                ; spritesHeight = $C1AB
 spritesWidth db		                    ; spritesWidth = $C1AC
 .ende	

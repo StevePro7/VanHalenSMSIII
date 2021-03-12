@@ -49,16 +49,8 @@ _RAM_C147_ dw
 .enum $C1A9 export	
 _RAM_C1A9_ db	
 .ende	
-	
-.enum $C1AB export	
-_RAM_C1AB_ db	
-_RAM_C1AC_ db	
-.ende	
-	
-;.enum $FFFC export	
-;_RAM_FFFC_ db	
-;.ende	
-	
+
+
 
 	
 .BANK 0 SLOT 0	
@@ -8939,7 +8931,7 @@ _SMS_setSpriteMode:
 		ld hl, $0102
 		call _SMS_VDPturnOnFeature
 		pop bc
-		ld hl, $C1AB	; $C1AB = $C1AB
+		ld hl, spritesHeight	; spritesHeight = spritesHeight
 		ld (hl), $10
 		jr ++
 	
@@ -8948,23 +8940,23 @@ _SMS_setSpriteMode:
 		ld hl, $0102
 		call _SMS_VDPturnOffFeature
 		pop bc
-		ld hl, $C1AB	; $C1AB = $C1AB
+		ld hl, spritesHeight	; spritesHeight = spritesHeight
 		ld (hl), $08
 ++:	
 		bit 1, c
 		jr z, +
 		ld hl, $0101
 		call _SMS_VDPturnOnFeature
-		ld hl, $C1AC	; $C1AC = $C1AC
+		ld hl, spritesWidth	; spritesWidth = spritesWidth
 		ld (hl), $10
-		ld iy, $C1AB	; $C1AB = $C1AB
+		ld iy, spritesHeight	; spritesHeight = spritesHeight
 		sla (iy+0)
 		ret
 	
 +:	
 		ld hl, $0101
 		call _SMS_VDPturnOffFeature
-		ld hl, $C1AC	; $C1AC = $C1AC
+		ld hl, spritesWidth	; spritesWidth = spritesWidth
 		ld (hl), $08
 		ret
 	
