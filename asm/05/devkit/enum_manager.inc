@@ -122,7 +122,7 @@ record_tilemap_data db                  ; record_tilemap_data = $C17A
 record_palette_data db                  ; record_palette_data = $C192	
 .ende
 
-.enum $C1AA export	
+.enum $C1A9 export	
 VDPReg db                               ; VDPReg = $C1A9
 .ende
 

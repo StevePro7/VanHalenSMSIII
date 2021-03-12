@@ -45,10 +45,7 @@ _RAM_C125_ db
 _RAM_C145_ dw	
 _RAM_C147_ dw	
 .ende	
-	
-.enum $C1A9 export	
-_RAM_C1A9_ db	
-.ende	
+
 
 
 
@@ -8853,7 +8850,7 @@ _SMS_VDPturnOnFeature:
 		ld c, l
 		ld e, h
 		ld d, $00
-		ld hl, $C1A9	; $C1A9 = $C1A9
+		ld hl, VDPReg	; VDPReg = VDPReg
 		add hl, de
 		ld a, (hl)
 		or c
@@ -8874,7 +8871,7 @@ _SMS_VDPturnOffFeature:
 		cpl
 		ld b, a
 		ld d, $00
-		ld hl, $C1A9	; $C1A9 = $C1A9
+		ld hl, VDPReg	; VDPReg = VDPReg
 		add hl, de
 		ld a, (hl)
 		and b
