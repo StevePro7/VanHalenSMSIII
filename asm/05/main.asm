@@ -542,7 +542,7 @@ _LABEL_3C7_:
 		ld a, (PSGChannel3SFX)	; PSGChannel3SFX = PSGChannel3SFX
 		or a
 		jr z, +
-		ld a, ($C019)	; $C019 = $C019
+		ld a, (PSGSFXChan3Volume)	; PSGSFXChan3Volume = PSGSFXChan3Volume
 		or $F0
 		out (Port_PSG), a
 		jr +++
@@ -608,7 +608,7 @@ _PSGSFXStop:
 		ld ix, $0000
 		add ix, sp
 		push af
-		ld a, ($C01A)	; $C01A = $C01A
+		ld a, (PSGSFXStatus)	; PSGSFXStatus = PSGSFXStatus
 		or a
 		jp z, _LABEL_602_
 		ld iy, PSGMusicVolumeAttenuation	; PSGMusicVolumeAttenuation = PSGMusicVolumeAttenuation
@@ -716,7 +716,7 @@ _LABEL_5B1_:
 		ld hl, PSGChannel3SFX	; PSGChannel3SFX = PSGChannel3SFX
 		ld (hl), $00
 _LABEL_5FD_:	
-		ld hl, $C01A	; $C01A = $C01A
+		ld hl, PSGSFXStatus	; PSGSFXStatus = PSGSFXStatus
 		ld (hl), $00
 _LABEL_602_:	
 		ld sp, ix
@@ -782,7 +782,7 @@ _LABEL_692_:
 		and $03
 		cp $03
 		jr nz, _LABEL_742_
-		ld a, ($C01A)	; $C01A = $C01A
+		ld a, (PSGSFXStatus)	; PSGSFXStatus = PSGSFXStatus
 		or a
 		jr z, _LABEL_742_
 		ld (PSGChannel3SFX), a	; PSGChannel3SFX = PSGChannel3SFX
@@ -920,23 +920,23 @@ _LABEL_77B_:
 	.db $C9
 	
 _PSGSFXFrame:	
-		ld a, ($C01A)	; $C01A = $C01A
+		ld a, (PSGSFXStatus)	; PSGSFXStatus = PSGSFXStatus
 		or a
 		ret z
-		ld a, ($C021)	; $C021 = $C021
+		ld a, (PSGSFXSkipFrames)	; PSGSFXSkipFrames = PSGSFXSkipFrames
 		or a
 		jp nz, +++
-		ld hl, ($C01D)	; $C01D = $C01D
+		ld hl, (PSGSFXPointer)	; PSGSFXPointer = PSGSFXPointer
 _LABEL_7AB_:	
 		ld b, (hl)
 		inc hl
-		ld a, ($C023)	; $C023 = $C023
+		ld a, (PSGSFXSubstringLen)	; PSGSFXSubstringLen = PSGSFXSubstringLen
 		or a
 		jr z, +
 		dec a
-		ld ($C023), a	; $C023 = $C023
+		ld (PSGSFXSubstringLen), a	; PSGSFXSubstringLen = PSGSFXSubstringLen
 		jr nz, +
-		ld hl, ($C024)	; $C024 = $C024
+		ld hl, (PSGSFXSubstringRetAddr)	; PSGSFXSubstringRetAddr = PSGSFXSubstringRetAddr
 +:	
 		ld a, b
 		cp $40
@@ -949,14 +949,14 @@ _LABEL_7AB_:
 		jr ++
 	
 +:	
-		ld ($C019), a	; $C019 = $C019
+		ld (PSGSFXChan3Volume), a	; PSGSFXChan3Volume = PSGSFXChan3Volume
 ++:	
 		out (Port_PSG), a
 		jp _LABEL_7AB_
 	
 +++:	
 		dec a
-		ld ($C021), a	; $C021 = $C021
+		ld (PSGSFXSkipFrames), a	; PSGSFXSkipFrames = PSGSFXSkipFrames
 		ret
 	
 ++++:	
@@ -964,9 +964,9 @@ _LABEL_7AB_:
 		jr z, +
 		jr c, ++
 		and $07
-		ld ($C021), a	; $C021 = $C021
+		ld (PSGSFXSkipFrames), a	; PSGSFXSkipFrames = PSGSFXSkipFrames
 +:	
-		ld ($C01D), hl	; $C01D = $C01D
+		ld (PSGSFXPointer), hl	; PSGSFXPointer = PSGSFXPointer
 		ret
 	
 ++:	
@@ -979,26 +979,26 @@ _LABEL_7AB_:
 		ret
 	
 +:	
-		ld ($C01F), hl	; $C01F = $C01F
+		ld (PSGSFXLoopPoint), hl	; PSGSFXLoopPoint = PSGSFXLoopPoint
 		jp _LABEL_7AB_
 	
 ++:	
-		ld a, ($C022)	; $C022 = $C022
+		ld a, (PSGSFXLoopFlag)	; PSGSFXLoopFlag = PSGSFXLoopFlag
 		or a
 		jp z, _PSGSFXStop
-		ld hl, ($C01F)	; $C01F = $C01F
-		ld ($C01D), hl	; $C01D = $C01D
+		ld hl, (PSGSFXLoopPoint)	; PSGSFXLoopPoint = PSGSFXLoopPoint
+		ld (PSGSFXPointer), hl	; PSGSFXPointer = PSGSFXPointer
 		jp _LABEL_7AB_
 	
 +++:	
 		sub $04
-		ld ($C023), a	; $C023 = $C023
+		ld (PSGSFXSubstringLen), a	; PSGSFXSubstringLen = PSGSFXSubstringLen
 		ld c, (hl)
 		inc hl
 		ld b, (hl)
 		inc hl
-		ld ($C024), hl	; $C024 = $C024
-		ld hl, ($C01B)	; $C01B = $C01B
+		ld (PSGSFXSubstringRetAddr), hl	; PSGSFXSubstringRetAddr = PSGSFXSubstringRetAddr
+		ld hl, (PSGSFXStart)	; PSGSFXStart = PSGSFXStart
 		add hl, bc
 		jp _LABEL_7AB_
 	
