@@ -9434,93 +9434,95 @@ G$__SMS__SEGA_signature$0$0:
 ___SMS__SEGA_signature:	
 	.db $54 $4D $52 $20 $53 $45 $47 $41 $FF $FF $91 $AE $99 $99 $00 $4C
 	
+; Banks.
+.include "engine/bank_manager.inc"
+
+; ; Data from 8000 to 800F (16 bytes)	
+; G$splash__palette__bin$0$0:	
+; _splash__palette__bin:	
+; 	.db $00 $03 $01 $05 $05 $06 $06 $07 $07 $17 $1A $2A $0A $1F $0F $3F
 	
-; Data from 8000 to 800F (16 bytes)	
-G$splash__palette__bin$0$0:	
-_splash__palette__bin:	
-	.db $00 $03 $01 $05 $05 $06 $06 $07 $07 $17 $1A $2A $0A $1F $0F $3F
+; .BANK 2	
+; .ORG $0000	
 	
-.BANK 2	
-.ORG $0000	
+; 	; Data from 8000 to BFFF (16384 bytes)
+; 	.incbin "data/File01_08000_0BFFF.dat"
 	
-	; Data from 8000 to BFFF (16384 bytes)
-	.incbin "data/File01_08000_0BFFF.dat"
+; .BANK 3	
+; .ORG $0000	
 	
-.BANK 3	
-.ORG $0000	
+; 	; Data from C000 to FFFF (16384 bytes)
+; 	.incbin "data/File02_0C000_0FFFF.dat"
 	
-	; Data from C000 to FFFF (16384 bytes)
-	.incbin "data/File02_0C000_0FFFF.dat"
+; .BANK 4	
+; .ORG $0000	
 	
-.BANK 4	
-.ORG $0000	
+; 	; Data from 10000 to 13FFF (16384 bytes)
+; 	.incbin "data/File03_10000_13FFF.dat"
 	
-	; Data from 10000 to 13FFF (16384 bytes)
-	.incbin "data/File03_10000_13FFF.dat"
+; .BANK 5	
+; .ORG $0000	
 	
-.BANK 5	
-.ORG $0000	
+; 	; Data from 14000 to 17FFF (16384 bytes)
+; 	.incbin "data/File04_14000_17FFF.dat"
 	
-	; Data from 14000 to 17FFF (16384 bytes)
-	.incbin "data/File04_14000_17FFF.dat"
+; .BANK 6	
+; .ORG $0000	
 	
-.BANK 6	
-.ORG $0000	
+; 	; Data from 18000 to 1BFFF (16384 bytes)
+; 	.incbin "data/File05_18000_1BFFF.dat"
 	
-	; Data from 18000 to 1BFFF (16384 bytes)
-	.incbin "data/File05_18000_1BFFF.dat"
+; .BANK 7	
+; .ORG $0000	
 	
-.BANK 7	
-.ORG $0000	
+; 	; Data from 1C000 to 1FFFF (16384 bytes)
+; 	.incbin "data/File06_1C000_1FFFF.dat"
 	
-	; Data from 1C000 to 1FFFF (16384 bytes)
-	.incbin "data/File06_1C000_1FFFF.dat"
+; .BANK 8	
+; .ORG $0000	
 	
-.BANK 8	
-.ORG $0000	
+; 	; Data from 20000 to 23FFF (16384 bytes)
+; 	.incbin "data/File07_20000_23FFF.dat"
 	
-	; Data from 20000 to 23FFF (16384 bytes)
-	.incbin "data/File07_20000_23FFF.dat"
+; .BANK 9	
+; .ORG $0000	
 	
-.BANK 9	
-.ORG $0000	
+; 	; Data from 24000 to 27FFF (16384 bytes)
+; 	.incbin "data/File08_24000_27FFF.dat"
 	
-	; Data from 24000 to 27FFF (16384 bytes)
-	.incbin "data/File08_24000_27FFF.dat"
+; .BANK 10	
+; .ORG $0000	
 	
-.BANK 10	
-.ORG $0000	
+; 	; Data from 28000 to 2BFFF (16384 bytes)
+; 	.incbin "data/File09_28000_2BFFF.dat"
 	
-	; Data from 28000 to 2BFFF (16384 bytes)
-	.incbin "data/File09_28000_2BFFF.dat"
+; .BANK 11	
+; .ORG $0000	
 	
-.BANK 11	
-.ORG $0000	
+; 	; Data from 2C000 to 2FFFF (16384 bytes)
+; 	.incbin "data/File10_2C000_2FFFF.dat"
 	
-	; Data from 2C000 to 2FFFF (16384 bytes)
-	.incbin "data/File10_2C000_2FFFF.dat"
+; .BANK 12	
+; .ORG $0000	
 	
-.BANK 12	
-.ORG $0000	
+; 	; Data from 30000 to 33FFF (16384 bytes)
+; 	.incbin "data/File11_30000_33FFF.dat"
 	
-	; Data from 30000 to 33FFF (16384 bytes)
-	.incbin "data/File11_30000_33FFF.dat"
+; .BANK 13	
+; .ORG $0000	
 	
-.BANK 13	
-.ORG $0000	
+; 	; Data from 34000 to 37FFF (16384 bytes)
+; 	.incbin "data/File12_34000_37FFF.dat"
 	
-	; Data from 34000 to 37FFF (16384 bytes)
-	.incbin "data/File12_34000_37FFF.dat"
+; .BANK 14	
+; .ORG $0000	
 	
-.BANK 14	
-.ORG $0000	
+; 	; Data from 38000 to 3BFFF (16384 bytes)
+; 	.incbin "data/File13_38000_3BFFF.dat"
 	
-	; Data from 38000 to 3BFFF (16384 bytes)
-	.incbin "data/File13_38000_3BFFF.dat"
+; .BANK 15	
+; .ORG $0000	
 	
-.BANK 15	
-.ORG $0000	
-	
-	; Data from 3C000 to 3FFFF (16384 bytes)
-	.incbin "data/File14_3C000_3FFFF.dat"
+; 	; Data from 3C000 to 3FFFF (16384 bytes)
+; 	.incbin "data/File14_3C000_3FFFF.dat"
 	
